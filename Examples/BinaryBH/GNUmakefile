@@ -19,4 +19,9 @@ src_dirs := $(GRCHOMBO_SOURCE)/utils \
             $(GRCHOMBO_SOURCE)/AMRInterpolator  \
             $(GRCHOMBO_SOURCE)/InitialConditions/BlackHoles
 
+SimulationParameters.hpp: SimulationParameters.inc
+
+SimulationParameters.inc: SimulationParameters.txt
+	python $(GRCHOMBO_SOURCE)/utils/generate_parameter_code.py SimulationParameters.txt SimulationParameters.inc
+
 include $(CHOMBO_HOME)/mk/Make.test

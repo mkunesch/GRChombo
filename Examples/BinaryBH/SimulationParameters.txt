@@ -1,0 +1,38 @@
+//Basic Chombo setup
+name: verbosity typename: int
+name: nan_check typename: int
+name: ignore_checkpoint_name_mismatch typename: bool default: false //ignore mismatch of variable names between restart file and program
+name: dt_multiplier typename: double
+
+//Grid setup
+name: L typename: double //Physical sidelength of the grid
+name: num_ghosts typename: int
+name: tag_buffer_size typename: int //Amount the tagged region is grown by
+name: isPeriodic typename: std::array<bool,CH_SPACEDIM>
+name: regrid_threshold typename: double
+
+//Lapse evolution
+name: lapse_advec_coeff typename: double
+name: lapse_power typename: double
+name: lapse_coeff typename: double
+
+//ShiftEvolution
+name: shift_advec_coeff typename: double
+name: shift_Gamma_coeff typename: double
+name: eta typename: double
+name: SpatialBetaDriverRadius typename: double
+
+//CCZ4 parameters
+name: kappa1 typename: double
+name: kappa2 typename: double
+name: kappa3 typename: double
+name: covariantZ4 typename: int
+name: sigma typename: double //Dissipation
+
+//Initial data
+name: massA typename: double
+name: massB typename: double
+name: centerA typename: std::array<double,CH_SPACEDIM>
+name: centerB typename: std::array<double,CH_SPACEDIM>
+name: momentumA typename: std::array<double,CH_SPACEDIM>
+name: momentumB typename: std::array<double,CH_SPACEDIM>
