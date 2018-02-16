@@ -1,6 +1,7 @@
 import sys
 
-def load_field_value(field_name, word_list, verbose = True):
+
+def load_field_value(field_name, word_list, verbose=True):
     """Loads value corresponding to field_name from a list of words"""
     try:
         field_index = word_list.index(field_name + ":") + 1
@@ -11,6 +12,7 @@ def load_field_value(field_name, word_list, verbose = True):
     else:
         return word_list[field_index]
 
+
 class Parameter(object):
     name = None
     typename = None
@@ -20,7 +22,8 @@ class Parameter(object):
         """Sets up Parameter object using information from a list of words"""
         self.name = load_field_value("name", word_list)
         self.typename = load_field_value("typename", word_list)
-        self.optional_default = load_field_value("default", word_list, verbose = False)
+        self.optional_default = load_field_value(
+            "default", word_list, verbose=False)
 
     def is_fully_defined(self):
         """Checks whether enough information is available to write c++ code."""
@@ -31,7 +34,7 @@ class Parameter(object):
         if self.is_fully_defined():
             cpp_code = '    pp.load("' + self.name + '", ' + self.name
             if self.optional_default is not None:
-                    cpp_code += ', ' + self.optional_default
+                cpp_code += ', ' + self.optional_default
             cpp_code += ');\n'
             return cpp_code
         else:
@@ -44,6 +47,7 @@ class Parameter(object):
             return cpp_code
         else:
             return ""
+
 
 def generate_cpp_code(config_data):
     """Generates c++ code for parameter loading given configuration data."""

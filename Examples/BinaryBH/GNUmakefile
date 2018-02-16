@@ -24,4 +24,8 @@ SimulationParameters.hpp: SimulationParameters.inc
 SimulationParameters.inc: SimulationParameters.txt
 	python $(GRCHOMBO_SOURCE)/utils/generate_parameter_code.py SimulationParameters.txt SimulationParameters.inc
 
+clean::
+	rm -rf $(ebase)*.dSYM
+	rm SimulationParameters.inc
+
 include $(CHOMBO_HOME)/mk/Make.test
